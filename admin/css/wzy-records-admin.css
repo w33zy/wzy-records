@@ -18,3 +18,7 @@
 .record-container label {
     display: block;
 }
+
+.record-container input[type=text] {
+    width: 95%;
+}

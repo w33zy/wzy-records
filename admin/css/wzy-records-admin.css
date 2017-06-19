@@ -1,0 +1,20 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.record-general-metabox-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.record-container {
+    flex-basis: 24%;
+    margin: 0 0 1em 0;
+}
+
+.record-container label {
+    display: block;
+}

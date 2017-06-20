@@ -7,8 +7,6 @@ if ( isset( $GLOBALS['record_id'] ) && $GLOBALS['record_id'] !== '' ) {
 	$record_id = get_post()->ID;
 }
 
-var_dump( $record );
-
 $template = new wzy_Records_Template_Tags( '1.0.0' );
 
 

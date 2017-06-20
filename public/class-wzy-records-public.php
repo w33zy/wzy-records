@@ -203,6 +203,7 @@ class wzy_Records_Public {
 	 * @return string $content
 	 */
 	public function rcno_render_review_content( $record_post ) {
+
 		// Get the layout's include path.
 		$include_path = __DIR__ . 'templates/wzy_default/review.php';
 
@@ -229,6 +230,20 @@ class wzy_Records_Public {
 
 		// return the rendered content.
 		return $content;
+	}
+
+
+	public function wzy_get_archive_template( $template ) {
+
+		if ( is_archive() && is_category() ) {
+			$new_template = __DIR__ . '/templates/wzy_default/test.php';
+
+			if ( is_readable( $new_template ) ) {
+				return $new_template;
+			}
+		}
+
+		return $template;
 	}
 
 }

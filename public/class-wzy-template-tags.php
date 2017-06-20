@@ -78,4 +78,48 @@ class wzy_Records_Template_Tags {
 
 		return null;
 	}
+	
+	/**
+	 * @param        $taxonomy
+	 * @param bool   $label
+	 * @param string $sep
+	 *
+	 * @return null|string
+	 */
+	public function get_the_wzy_taxonomy_terms( $record_id, $taxonomy, $label = false, $sep = ', ' ) {
+
+		$out = '';
+
+		$terms = get_the_term_list( $record_id, $taxonomy, '<span class="rcno-tax-term">', $sep, '</span>' );
+		$tax   = get_taxonomy( $taxonomy );
+
+		if ( false === $tax || false === $terms ) {
+			return null;
+		}
+
+		$counts = wp_get_post_terms( $record_id, $taxonomy ); // Get the number of terms in a category, per post.
+		$tax_label = $tax->labels->name;
+
+		if ( count( $counts ) === 1 ) { // If we have only 1 term singularize the label name.
+			$tax_label = wzy_Pluralize_Helper::singularize( $tax_label );
+		}
+
+
+		$prefix = '';
+
+		if ( $label ) {
+			$prefix = '<span class="wzy-tax-name">' . $tax_label . ': ' . '</span>';
+		}
+
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			$out .= sprintf(
+				'<div class="wzy-term-list">%1s%2s</div>',
+				$prefix,
+				$terms
+			);
+			$out .= '';
+		}
+
+		return $out;
+	}
 }

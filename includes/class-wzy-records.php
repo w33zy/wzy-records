@@ -218,6 +218,8 @@ class wzy_Records {
 		// Get the rendered content of a record and forward it to the theme as the_content().
 		$this->loader->add_filter( 'the_content', $plugin_public, 'wzy_get_record_content' );
 
+		$this->loader->add_filter( 'template_include', $plugin_public, 'wzy_get_archive_template', 99 );
+
 	}
 
 	/**
